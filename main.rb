@@ -1,6 +1,7 @@
 require 'highline/import'
-require 'lib/room'
-require 'lib/player'
+require './lib/room'
+require './lib/player'
+Dir[File.dirname(__FILE__) + '/lib/rooms/*.rb'].each {|room_file| require room_file }
 
 player = Player.new
 
@@ -45,26 +46,10 @@ puts "Now it's up to you to save your world!"
 confirm = ask("Ready to play? [Y/N] ") { |yn| yn.limit = 1, yn.validate = /[yn]/i }
 exit unless confirm.downcase == 'y'
 
-def open_cabinet
-    puts "The cabinet is empty"
-end
-
 def open_door_one
     puts "You enter a much larger room. What will you do?"
 end
 
-puts "You are in a small room with a small cabinet and a single door leading out.
-what will you do?"
-small_room_do = gets.chomp
-case small_room_do
-    when "open door"
-        return open_door_one
-    when "open cabinet"
-        return open_cabinet
-    when "search cabinet"
-        return open_cabinet
-    when "search room"
-        return room_one
-    else puts "I dont understand. try 'open' or 'search' and a location"
-end
+small_room = SmallRoom.new
 
+player.enter_room(small_room)
