@@ -1,3 +1,5 @@
+require 'highline/import'
+
 puts "You are about to venture into a magical land, but first we need to 
 learn more about you..."
 puts #=>extra spacing
@@ -47,7 +49,6 @@ here in your time!"
 puts #=>extra spacing
 puts "Now it's up to you to save your world!"
 
-require 'highline/import'
 confirm = ask("Ready to play? [Y/N] ") { |yn| yn.limit = 1, yn.validate = /[yn]/i }
 exit unless confirm.downcase == 'y'
 
