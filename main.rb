@@ -58,13 +58,13 @@ what will you do?"
 small_room_do = gets.chomp
 case small_room_do
     when "open door"
-        return open_door_one
+        open_door_one
     when "open cabinet"
-        return open_cabinet
+        open_cabinet
     when "search cabinet"
-        return open_cabinet
+        open_cabinet
     when "search room"
-        return room_one
+        room_one
     else puts "I dont understand. try 'open' or 'search' and a location"
 end
 
