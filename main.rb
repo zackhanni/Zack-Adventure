@@ -1,6 +1,9 @@
 require 'highline/import'
-require 'lib/room'
-require 'lib/player'
+require './lib/room'
+require './lib/player'
+
+# require all classes in rooms folder with one line
+Dir[File.dirname(__FILE__) + '/lib/rooms/*.rb'].each {|room_file| require room_file }
 
 player = Player.new
 
@@ -17,7 +20,7 @@ loading_phrases.each do |phrase|
     puts #=>extra spacing
 end
 
-if player.favorite_color == "gold" then
+if player.color == "gold" then
     second_color = "black"
 else
     second_color = "gold"
@@ -26,12 +29,12 @@ puts #=>extra spacing
 
 sleep 1.5
 enemy_name = player.name.reverse.split.map(&:capitalize).join(' ')
-puts "In the the keep's finest #{player.favorite_color} and #{second_color} colored kirtle, a most
+puts "In the the keep's finest #{player.color} and #{second_color} colored kirtle, a most
 unlikely hero embarks on a perilous quest of #{player.quest} in order
 to destroy the evil #{enemy_name}!"
 
 sleep 1
-castle_name = player.favorite_color.reverse.split.map(&:capitalize).join(' ')
+castle_name = player.color.reverse.split.map(&:capitalize).join(' ')
 puts "#{player.name} is a handmaiden in Castle #{castle_name}. Well...
 long story short humans in an alternate reality found out how to make
 the zombie virus... the hard way"
@@ -45,26 +48,4 @@ puts "Now it's up to you to save your world!"
 confirm = ask("Ready to play? [Y/N] ") { |yn| yn.limit = 1, yn.validate = /[yn]/i }
 exit unless confirm.downcase == 'y'
 
-def open_cabinet
-    puts "The cabinet is empty"
-end
-
-def open_door_one
-    puts "You enter a much larger room. What will you do?"
-end
-
-puts "You are in a small room with a small cabinet and a single door leading out.
-what will you do?"
-small_room_do = gets.chomp
-case small_room_do
-    when "open door"
-        open_door_one
-    when "open cabinet"
-        open_cabinet
-    when "search cabinet"
-        open_cabinet
-    when "search room"
-        room_one
-    else puts "I dont understand. try 'open' or 'search' and a location"
-end
-
+Player.enter_room(SmallRoom.new)

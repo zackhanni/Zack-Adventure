@@ -13,4 +13,10 @@ class Player
         @color = gets.chomp
         puts #=>extra spacing
     end
+
+    def self.enter_room(room)
+        @current_room = room
+        puts room.entrance_message
+        room.prompt_for_command
+    end
 end
