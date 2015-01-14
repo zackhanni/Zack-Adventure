@@ -18,7 +18,7 @@ loading_phrases.each do |phrase|
     puts #=>extra spacing
 end
 
-if player.favorite_color == "gold" then
+if player.color == "gold" then
     second_color = "black"
 else
     second_color = "gold"
@@ -27,12 +27,12 @@ puts #=>extra spacing
 
 sleep 1.5
 enemy_name = player.name.reverse.split.map(&:capitalize).join(' ')
-puts "In the the keep's finest #{player.favorite_color} and #{second_color} colored kirtle, a most
+puts "In the the keep's finest #{player.color} and #{second_color} colored kirtle, a most
 unlikely hero embarks on a perilous quest of #{player.quest} in order
 to destroy the evil #{enemy_name}!"
 
 sleep 1
-castle_name = player.favorite_color.reverse.split.map(&:capitalize).join(' ')
+castle_name = player.color.reverse.split.map(&:capitalize).join(' ')
 puts "#{player.name} is a handmaiden in Castle #{castle_name}. Well...
 long story short humans in an alternate reality found out how to make
 the zombie virus... the hard way"
