@@ -1,6 +1,8 @@
 require 'highline/import'
 require './lib/room'
 require './lib/player'
+
+# require all classes in rooms folder with one line
 Dir[File.dirname(__FILE__) + '/lib/rooms/*.rb'].each {|room_file| require room_file }
 
 player = Player.new
@@ -46,10 +48,4 @@ puts "Now it's up to you to save your world!"
 confirm = ask("Ready to play? [Y/N] ") { |yn| yn.limit = 1, yn.validate = /[yn]/i }
 exit unless confirm.downcase == 'y'
 
-def open_door_one
-    puts "You enter a much larger room. What will you do?"
-end
-
-small_room = SmallRoom.new
-
-player.enter_room(small_room)
+Player.enter_room(SmallRoom.new)
