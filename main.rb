@@ -6,21 +6,21 @@ player = Player.new
 
 loading_phrases = ["Gathering Resources", "Feeding Cats", "Consolidating Pokemon Cards"]
 loading_phrases.each do |phrase|
-	puts phrase.to_s
-	20.times do
-		print "="
-		sleep 0.12
-	end
-	sleep 0.25
-	puts " 100% Complete"
-	sleep 0.5
-	puts #=>extra spacing
+    puts phrase.to_s
+    20.times do
+        print "="
+        sleep 0.12
+    end
+    sleep 0.25
+    puts " 100% Complete"
+    sleep 0.5
+    puts #=>extra spacing
 end
 
 if player.favorite_color == "gold" then
-	second_color = "black"
+    second_color = "black"
 else
-	second_color = "gold"
+    second_color = "gold"
 end
 puts #=>extra spacing
 
@@ -46,25 +46,25 @@ confirm = ask("Ready to play? [Y/N] ") { |yn| yn.limit = 1, yn.validate = /[yn]/
 exit unless confirm.downcase == 'y'
 
 def open_cabinet
-	puts "The cabinet is empty"
+    puts "The cabinet is empty"
 end
 
 def open_door_one
-	puts "You enter a much larger room. What will you do?"
+    puts "You enter a much larger room. What will you do?"
 end
 
 puts "You are in a small room with a small cabinet and a single door leading out.
 what will you do?"
 small_room_do = gets.chomp
 case small_room_do
-	when "open door"
-		return open_door_one
-	when "open cabinet"
-		return open_cabinet
-	when "search cabinet"
-		return open_cabinet
-	when "search room"
-		return room_one
-	else puts "I dont understand. try 'open' or 'search' and a location"
+    when "open door"
+        return open_door_one
+    when "open cabinet"
+        return open_cabinet
+    when "search cabinet"
+        return open_cabinet
+    when "search room"
+        return room_one
+    else puts "I dont understand. try 'open' or 'search' and a location"
 end
 
