@@ -5,16 +5,24 @@ class SmallRoom < Room
     end
 
     def open_door
-        Player.enter_room(LargeRoom.new)
+        @player.enter_room(LargeRoom.new)
     end
 
     def open_cabinet
-        puts "The cabinet is empty"
+        search_cabinet
     end
 
     def search_cabinet
+        if @player.has_key?
+            puts "Its empty now"
+        else
+            puts "Oh look! It's a key!"
+            @player.has_key = true
+            puts "You pick up the key"
+        end
     end
 
     def search_room
+        puts @entrance_message
     end
 end
