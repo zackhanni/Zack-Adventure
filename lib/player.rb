@@ -1,5 +1,9 @@
+require "singleton"
+
 class Player
-    attr_accessor :name, :quest, :color, :current_room
+    include Singleton
+
+    attr_accessor :name, :quest, :color, :current_room, :has_key
 
     def initialize
         puts "You are about to venture into a magical land, but first we need to
@@ -12,9 +16,14 @@ class Player
         puts "What is your favorite color?"
         @color = gets.chomp
         puts #=>extra spacing
+        @has_key = false
     end
 
-    def self.enter_room(room)
+    def has_key?
+        @has_key
+    end
+
+    def enter_room(room)
         @current_room = room
         puts room.entrance_message
         room.prompt_for_command
