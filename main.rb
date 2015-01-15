@@ -7,6 +7,7 @@ Dir[File.dirname(__FILE__) + '/lib/rooms/*.rb'].each {|room_file| require room_f
 
 player = Player.new
 
+=begin
 loading_phrases = ["Gathering Resources", "Feeding Cats", "Consolidating Pokemon Cards"]
 loading_phrases.each do |phrase|
     puts phrase.to_s
@@ -19,6 +20,7 @@ loading_phrases.each do |phrase|
     sleep 0.5
     puts #=>extra spacing
 end
+=end
 
 if player.color == "gold" then
     second_color = "black"
@@ -29,7 +31,7 @@ puts #=>extra spacing
 
 sleep 1.5
 enemy_name = player.name.reverse.split.map(&:capitalize).join(' ')
-puts "In the the keep's finest #{player.color} and #{second_color} colored kirtle, a most
+puts "In the keep's finest #{player.color} and #{second_color} colored kirtle, a most
 unlikely hero embarks on a perilous quest of #{player.quest} in order
 to destroy the evil #{enemy_name}!"
 
